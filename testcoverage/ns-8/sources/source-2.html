@@ -1,0 +1,172 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > UserViewModel</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.test.moladininterviewtest.presentation</a>
+</div>
+
+<h1>Coverage Summary for Class: UserViewModel (com.test.moladininterviewtest.presentation)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">UserViewModel</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">UserViewModel$getUser$$inlined$map$1</td>
+  </tr>
+  <tr>
+    <td class="name">UserViewModel$getUser$$inlined$map$1$2</td>
+  </tr>
+  <tr>
+    <td class="name">UserViewModel$getUser$$inlined$map$1$2$1</td>
+  </tr>
+  <tr>
+    <td class="name">UserViewModel$getUser$1$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/7)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.test.moladininterviewtest.presentation
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import androidx.lifecycle.ViewModel
+<i class="no-highlight">4</i>&nbsp;import androidx.lifecycle.viewModelScope
+<i class="no-highlight">5</i>&nbsp;import androidx.paging.PagingData
+<i class="no-highlight">6</i>&nbsp;import androidx.paging.cachedIn
+<i class="no-highlight">7</i>&nbsp;import androidx.paging.map
+<i class="no-highlight">8</i>&nbsp;import com.test.moladininterviewtest.data.model.UserEntity.UserResponse.Companion.toDomain
+<i class="no-highlight">9</i>&nbsp;import com.test.moladininterviewtest.di.ApplicationModule
+<i class="no-highlight">10</i>&nbsp;import com.test.moladininterviewtest.domain.model.User
+<i class="no-highlight">11</i>&nbsp;import com.test.moladininterviewtest.domain.repository.UserRepository
+<i class="no-highlight">12</i>&nbsp;import dagger.hilt.android.lifecycle.HiltViewModel
+<i class="no-highlight">13</i>&nbsp;import kotlinx.coroutines.CoroutineDispatcher
+<i class="no-highlight">14</i>&nbsp;import kotlinx.coroutines.flow.Flow
+<i class="no-highlight">15</i>&nbsp;import kotlinx.coroutines.flow.map
+<i class="no-highlight">16</i>&nbsp;import javax.inject.Inject
+<i class="no-highlight">17</i>&nbsp;
+<i class="no-highlight">18</i>&nbsp;@HiltViewModel
+<i class="no-highlight">19</i>&nbsp;class UserViewModel @Inject constructor(
+<b class="fc"><i class="no-highlight">20</i>&nbsp;    private val userRepository: UserRepository,</b>
+<b class="fc"><i class="no-highlight">21</i>&nbsp;    @ApplicationModule.DispatcherIO val dispatcher: CoroutineDispatcher</b>
+<b class="fc"><i class="no-highlight">22</i>&nbsp;): ViewModel() {</b>
+<i class="no-highlight">23</i>&nbsp;
+<i class="no-highlight">24</i>&nbsp;    fun getUser(): Flow&lt;PagingData&lt;User&gt;&gt; {
+<b class="fc"><i class="no-highlight">25</i>&nbsp;        return userRepository.getUser().map {</b>
+<i class="no-highlight">26</i>&nbsp;            value -&gt;
+<b class="fc"><i class="no-highlight">27</i>&nbsp;                value.map {</b>
+<b class="fc"><i class="no-highlight">28</i>&nbsp;                    it.toDomain()</b>
+<i class="no-highlight">29</i>&nbsp;                }
+<b class="fc"><i class="no-highlight">30</i>&nbsp;        }.cachedIn(viewModelScope)</b>
+<i class="no-highlight">31</i>&nbsp;    }
+<i class="no-highlight">32</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-11-29 09:41</div>
+</div>
+</body>
+</html>
