@@ -63,7 +63,7 @@ class NoopListCallback : ListUpdateCallback {
     override fun onInserted(position: Int, count: Int) {}
     override fun onRemoved(position: Int, count: Int) {}
 }
-@RunWith(AndroidJUnit4::class)
+
 class UserViewModelTest {
 
     @get:Rule
